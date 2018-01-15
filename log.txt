@@ -1,0 +1,70 @@
+
+Action: Leave store, Confirmed: true
+Action: Leave store, Confirmed: false
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1000, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: false
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1000, Quantity: 1, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1000, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1000, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1000, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1000, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1000, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1000, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1000, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1000, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1000, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 1, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 10, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 0, Quantity: 0, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 1, Quantity: 100, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 2, Quantity: 10, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 3, Quantity: 2, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 9, Quantity: 10, Confirmed: true
+Action: Leave store, Confirmed: true
