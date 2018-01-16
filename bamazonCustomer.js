@@ -4,7 +4,9 @@
 	var mysql = require("mysql");
 
 //Variables
-	var products = [];
+	//If later going to make products searchable by name
+	// var products = [];
+	var productsById = [];
 //Connect to bamazon database
 	var connection = mysql.createConnection({
 	  host: "localhost",
@@ -84,16 +86,19 @@
 	  connection.query("SELECT * FROM products", function(err, res) {
 	    if (err) throw err;
 	    console.log("ID | Department | Product Name | Price")
+	    productsById = [];
 	    for (var i = 0; i < res.length; i++) {
+	    	productsById[i] = res[i].id;
 	    	if (res[i].stock_quantity < 1) {
-	    		console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | " + res[i].price + " | OUT OF STOCK");
+	    		console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | OUT OF STOCK");
 	    	} else {
-	    		console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | " + res[i].price);
+	    		console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price);
 	    	}
-	    	products[i] = {
-	    		id: res[i].id,
-	    		name: res[i].name,
-	    	};
+	    	//If later going to make products searchable by name
+	    	// products[i] = {
+	    	// 	id: res[i].id,
+	    	// 	name: res[i].name,
+	    	// };
 	    }
 	    
 	  action();
@@ -107,9 +112,9 @@
 				console.log("ID | Department | Product Name | Price");
 			    for (var i = 0; i < res.length; i++) {
 			    	if (res[i].stock_quantity < 1) {
-			    		console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | " + res[i].price + " | OUT OF STOCK");
+			    		console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | OUT OF STOCK");
 			    	} else {
-			    		console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | " + res[i].price);
+			    		console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price);
 			    	}
 			    }
 			});
@@ -123,9 +128,9 @@
 			    for (var i = 0; i < res.length; i++) {
 
 			    	if (res[i].stock_quantity < 1) {
-			    		console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | " + res[i].price + " | OUT OF STOCK");
+			    		console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | OUT OF STOCK");
 			    	} else {
-			    		console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | " + res[i].price);
+			    		console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price);
 			    	}
 			    }
 			});
@@ -144,8 +149,12 @@
 		        message: "Select product ID to buy:",
 		        name: "product",
 				validate: function(value) {
-				  var valid = !isNaN(parseInt(value));
-				  return valid || 'Please enter a number';
+					var valid;
+					if(productsById.indexOf(value) != -1) {
+						valid = true;
+					}
+				  //!isNaN(parseInt(value))
+				  return valid || 'Please select the ID of a product.';
 				},
 				filter: Number
 		      },
@@ -154,8 +163,11 @@
 				name: 'quantity',
 				message: 'How many do you need?',
 				validate: function(value) {
-				  var valid = !isNaN(parseInt(value));
-				  return valid || 'Please enter a number';
+					if(value == parseInt(value, 10) && value > 0) {
+						var valid = true;
+					}
+				  // var valid = !isNaN(parseInt(value));
+				  return valid || 'Please enter an integer greater than 0.';
 				},
 				filter: Number
 		      },
@@ -194,7 +206,7 @@
 		      {
 		        type: "list",
 		        message: "What would you like to do?",
-		        choices: ["Buy a product","Leave store"],
+		        choices: ["Buy a product","View products", "Leave store"],
 		        name: "action"
 		      },
 		      {
@@ -219,6 +231,9 @@
 		    		switch (inquirerResponse.action){
 		    			case "Buy a product":
 		    				buy();
+		    				break;
+		    			case "View products":
+		    				displayAll();
 		    				break;
 		    			case "Leave store":
 		    				connection.end();

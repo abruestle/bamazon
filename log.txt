@@ -68,3 +68,64 @@ Product: 3, Quantity: 2, Confirmed: true
 Action: Buy a product, Confirmed: true
 Product: 9, Quantity: 10, Confirmed: true
 Action: Leave store, Confirmed: true
+Action: View products, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: View Products for Sale, Confirmed: true
+Action: View Low Inventory, Confirmed: true
+Action: View Low Inventory, Confirmed: true
+Action: View Products for Sale, Confirmed: true
+Action: View Low Inventory, Confirmed: true
+Action: View Products for Sale, Confirmed: true
+Action: View Low Inventory, Confirmed: true
+Action: View Products for Sale, Confirmed: true
+Action: Leave, Confirmed: true
+Action: View Products for Sale, Confirmed: true
+Action: Leave, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 10, Quantity: 1, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 2, Quantity: 4.1, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 5, Quantity: 10, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Buy a product, Confirmed: true
+Product: 2, Quantity: 10, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: View Products for Sale, Confirmed: true
+Action: View Low Inventory, Confirmed: true
+Action: Add to Inventory, Confirmed: true
+Product: 10, Quantity: 1000, Confirmed: true
+Action: Add New Product, Confirmed: true
+Action: Add New Product, Confirmed: true
+Product: Toothpaste, Department: Health & Personal Care, Price: 5.09, Quantity: 1000, Confirmed: true
+Action: Leave, Confirmed: true
+Action: Add New Product, Confirmed: true
+Product: Cat, Department: Other, Price: 1000.99, Quantity: 2, Confirmed: true
+Action: Add New Product, Confirmed: true
+Product: Toothpaste, Department: Health & Personal Care, Price: 10.01, Quantity: 100, Confirmed: true
+Action: Leave, Confirmed: true
+Action: Add New Product, Confirmed: true
+Action: Add New Product, Confirmed: true
+Product: Toothpaste, Department: Books, Price: 10.01, Quantity: 5, Confirmed: true
+Action: Add New Product, Confirmed: true
+Product: Test, Department: Books, Price: 1.1, Quantity: 1, Confirmed: false
+Action: Leave, Confirmed: true
+Action: Add New Product, Confirmed: true
+Product: n, Department: Books, Price: 0.99, Quantity: 1, Confirmed: false
+Action: Leave, Confirmed: true
+Action: Add New Product, Confirmed: true
+Product: Test, Department: Books, Price: 19.99, Quantity: 10, Confirmed: true
+Action: Leave, Confirmed: true
+Action: Add New Product, Confirmed: true
+Product: Navy Ship Toy, Department: Toys, Price: 109.99, Quantity: 10, Confirmed: true
+Action: View Products for Sale, Confirmed: true
+Action: Add New Product, Confirmed: true
+Product: Test, Department: Books, Price: 19, Quantity: 10, Confirmed: false
+Action: Add New Product, Confirmed: true
+Product: 10, Department: Books, Price: 19, Quantity: 5, Confirmed: false
+Action: Add New Product, Confirmed: true
