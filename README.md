@@ -32,7 +32,10 @@ Amazon-like storefront with the MySQL and Node
 [x] Finish Manager
 [x] Test Customer
 [x] Test Manager
-[ ] Finish Supervisor
-[ ] Test Supervisor
+[x] Finish Supervisor
+[x] Test Supervisor
 [ ] Add viewing by department to Customer
 [ ] Add to Supervisor ability to switch to Manager, and Manager the abiltiy to act as a Customer with special manager privileges (as online stores may want to have a purchase made with cash go through the system)
+[ ] Option for supervisors to view just one department with more detail (so with the sale results they see with all but per product)
+[ ] Each table results given makes a pseudo table in the console by seeing how long each piece it is getting back and adjusting accordingly. If results are too long, truncate for customers but not for employees.
+[ ] Customers can view specific products using checklist to make a 'shopping list', and afterwards check out.

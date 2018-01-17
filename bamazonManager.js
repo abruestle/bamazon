@@ -293,16 +293,16 @@
   function displayAll(hidden) {
     connection.query("SELECT * FROM products", function(err, res) {
       if (err) throw err;
-      console.log("ID | Department | Product Name | Price | Quantity in Stock")
+      console.log(" | ID | Department | Product Name | Price | Quantity in Stock |")
       productsById = [];
       for (var i = 0; i < res.length; i++) {
         productsById[i] = res[i].id;
         productsByName[i] = res[i].product_name;
         if (!hidden)  {
           if (res[i].stock_quantity < 1) {
-            console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity+ " | OUT OF STOCK");
+            console.log(" | " + res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity+ " | OUT OF STOCK |");
           } else {
-            console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity);
+            console.log(" | " + res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity + " |");
           }
         }
         
@@ -316,12 +316,12 @@
   function querySpecific(department, product) {
     if(!product) {
       var query = connection.query("SELECT * FROM products WHERE department_name=?", [department], function(err, res) {
-        console.log("ID | Department | Product Name | Price | Quantity in Stock");
+        console.log(" | ID | Department | Product Name | Price | Quantity in Stock |");
           for (var i = 0; i < res.length; i++) {
             if (res[i].stock_quantity < 1) {
-              console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity+ " | OUT OF STOCK");
+              console.log(" | " + res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity+ " | OUT OF STOCK |");
             } else {
-              console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity);
+              console.log(" | " + res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity + " |");
             }
           }
       });
@@ -331,13 +331,13 @@
       
     } else {
       var query = connection.query("SELECT * FROM products WHERE product_name=?", [product], function(err, res) {
-        console.log("ID | Department | Product Name | Price | Quantity in Stock");
+        console.log(" | ID | Department | Product Name | Price | Quantity in Stock |");
           for (var i = 0; i < res.length; i++) {
 
             if (res[i].stock_quantity < 1) {
-              console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity + " | OUT OF STOCK");
+              console.log(" | " + res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity + " | OUT OF STOCK |");
             } else {
-              console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity);
+              console.log(" | " + res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity + " |");
             }
           }
           action();
@@ -348,12 +348,12 @@
 //Display Low Inventory
   function queryLow() {
     var query = connection.query("SELECT * FROM products WHERE stock_quantity<5", function(err, res) {
-      console.log("ID | Department | Product Name | Price | Quantity in Stock");
+      console.log(" | ID | Department | Product Name | Price | Quantity in Stock |");
         for (var i = 0; i < res.length; i++) {
           if (res[i].stock_quantity < 1) {
-            console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity + " | OUT OF STOCK");
+            console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity + " | OUT OF STOCK |");
           } else {
-            console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity);
+            console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity + " |");
           }
         }
         action();

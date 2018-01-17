@@ -174,3 +174,10 @@ Action: Leave, Confirmed: true
 Action: Create New Department, Confirmed: true
 Department: Staples, Price: undefined, Quantity: undefined, Confirmed: true
 Action: Leave, Confirmed: true
+Action: View Product Sales by Department, Confirmed: true
+Action: View Product Sales by Department, Confirmed: true
+Action: Leave, Confirmed: true
+Action: View Product Sales by Department, Confirmed: true
+Action: Leave, Confirmed: true
+Action: View Product Sales by Department, Confirmed: true
+Action: Leave, Confirmed: true

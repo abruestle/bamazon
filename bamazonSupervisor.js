@@ -131,16 +131,16 @@
   function displayAll(hidden) {
     connection.query("SELECT * FROM products", function(err, res) {
       if (err) throw err;
-      console.log("ID | Department | Product Name | Price | Quantity in Stock")
+      console.log(" | ID | Department | Product Name | Price | Quantity in Stock |")
       productsById = [];
       for (var i = 0; i < res.length; i++) {
         productsById[i] = res[i].id;
         productsByName[i] = res[i].product_name;
         if (!hidden)  {
           if (res[i].stock_quantity < 1) {
-            console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity+ " | OUT OF STOCK");
+            console.log(" | " + res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity+ " | OUT OF STOCK");
           } else {
-            console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity);
+            console.log(" | " + res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity);
           }
         }
         
@@ -151,20 +151,24 @@
     
   }
 //Display one Department
-  function displayByDepartment(department) {
-    var query = connection.query("SELECT * FROM products WHERE department_name=?", [department], function(err, res) {
-        console.log("ID | Department | Product Name | Price | Quantity in Stock");
+  function displayByDep() {
+    var query = connection.query("SELECT departments.department_id, departments.department_name, departments.over_head_costs, products.product_sales, (products.product_sales - departments.over_head_costs) total_profit FROM departments LEFT JOIN products ON departments.department_name = products.department_name GROUP BY department_id;", function(err, res) {
+        console.log(" | ID | Department | Over Head Costs | Product Sales | Total Profit |");
           for (var i = 0; i < res.length; i++) {
-            if (res[i].stock_quantity < 1) {
-              console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity+ " | OUT OF STOCK");
-            } else {
-              console.log(res[i].id + " | " + res[i].department_name + " | " + res[i].product_name + " | $" + res[i].price + " | " + res[i].stock_quantity);
-            }
+            console.log(" | " + res[i].department_id + " | " + res[i].department_name + " | " + Number(res[i].over_head_costs).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) + " | " + Number(res[i].product_sales).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) + " | " + Number(res[i].total_profit).toLocaleString('en-US', { style: 'currency', currency: 'USD' })+ " |");
           }
           action();
       });
 	}
-//Inquirer for displaying by department
+
+
+  // 5. When a supervisor selects `View Product Sales by Department`, the app should display a summarized table in their terminal/bash window. Use the table below as a guide.
+
+  // | department_id | department_name | over_head_costs | product_sales | total_profit |
+  // | ------------- | --------------- | --------------- | ------------- | ------------ |
+  // | 01            | Electronics     | 10000           | 20000         | 10000        |
+  // | 02            | Clothing        | 60000           | 100000        | 40000        |
+//Inquirer for displaying by department if later making an option to view just one in detail
 	function displayByDepInq() {
 		inquirer
         .prompt([
@@ -231,7 +235,7 @@
           if(inquirerResponse.confirm) {
             switch (inquirerResponse.action){
               case "View Product Sales by Department":
-                displayByDepInq();
+                displayByDep();
                 break;
               case "Create New Department":
                 addDepInq();
