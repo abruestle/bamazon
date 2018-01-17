@@ -42,9 +42,20 @@
   connection.connect(function(err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId);
-    displayAll();
+    makeDepArray(displayAll);
   });
 
+//First view for adding departments
+  function makeDepArray(func) {
+      var query = connection.query("SELECT department_name FROM departments GROUP BY department_name;", function(err, res) {
+        departmentsList = [];
+      for (var i = 0; i < res.length; i++) {
+        departmentsList.push(res[i].department_name);
+      }
+      func();
+      });
+
+  }
 //Update product in database
 
   function addInvCheck(productID, added) {
@@ -191,7 +202,7 @@
         // Log all results of the SELECT statement
         //updateProduct2(productID, added);
         // console.log("Results: "+ JSON.stringify(res, null, 2));
-        console.log("You have added "+ quan + " of '"+ prod+ "' at "+price+".")
+        console.log("You have added "+ quan + " of '"+ prod+ "' at "+Number(price).toLocaleString('en-US', { style: 'currency', currency: 'USD' })+".")
         displayAll(true);
       });
   }

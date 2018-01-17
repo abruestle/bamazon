@@ -163,3 +163,14 @@ Action: Leave store, Confirmed: true
 Action: View Product Sales by Department, Confirmed: true
 Department: Music, Confirmed: false
 Action: Create New Department, Confirmed: true
+Action: Leave store, Confirmed: true
+Action: Leave, Confirmed: true
+Action: Leave, Confirmed: true
+Action: Create New Department, Confirmed: true
+Action: Create New Department, Confirmed: true
+Action: Create New Department, Confirmed: true
+Department: Pets, Price: undefined, Quantity: undefined, Confirmed: true
+Action: Leave, Confirmed: true
+Action: Create New Department, Confirmed: true
+Department: Staples, Price: undefined, Quantity: undefined, Confirmed: true
+Action: Leave, Confirmed: true

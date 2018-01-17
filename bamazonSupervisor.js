@@ -59,19 +59,14 @@
 	}
 //Add a new department
 
-  function addDep(prod, depa, price, quan) {
-    // console.log("Add Prod Check");
-    // console.log(prod);
-    // console.log(depa);
-    // console.log(price);
-    // console.log(quan);
-    var query = connection.query('INSERT INTO departments (product_name, department_name, price, stock_quantity) VALUES (?, ?, ?, ?);', [prod, depa, price, quan], function(err, res) {
+  function addDep(depa, cost) {
+    var query = connection.query('INSERT INTO departments (department_name, over_head_costs) VALUES (?, ?);', [depa, cost], function(err, res) {
         if (err) throw err;
         // Log all results of the SELECT statement
         //updateProduct2(productID, added);
         // console.log("Results: "+ JSON.stringify(res, null, 2));
-        console.log("You have added "+ quan + " of '"+ prod+ "' at "+price+".")
-        displayAll(true);
+        console.log("You have added '"+ depa + "' with a "+Number(cost).toLocaleString('en-US', { style: 'currency', currency: 'USD' })+" over head cost.")
+        makeDepArray(action);
       });
   }
 //Inquirer for adding completely new department
@@ -82,11 +77,11 @@
           {
             type: "input",
             message: "Select new department name:",
-            name: "product",
+            name: "department",
             validate: function(value) {
               if (!value.trim()){
                 return "Please give a name to the new department.";
-              } else if (departmentsByName.indexOf(value) != -1) {
+              } else if (departmentsList.indexOf(value) != -1) {
                 return "Department already exists.";
               }
               return true;
@@ -94,14 +89,14 @@
           },
           {
             type: 'input',
-            name: 'quantity',
-            message: 'How many are being added?',
+            name: 'cost',
+            message: 'What are the over head costs?',
             validate: function(value) {
               if(value == parseFloat(value, 10).toFixed(2) && value >= 0) {
                 var valid = true;
               }
               // var valid = !isNaN(parseInt(value));
-              return valid || 'Please enter a price.';
+              return valid || 'Please enter a cost.';
             },
             filter: Number
           },
@@ -112,7 +107,7 @@
           }
         ])
         .then(function(inquirerResponse) {
-          fs.appendFile( "log.txt", "\nProduct: "+inquirerResponse.product+", Department: "+inquirerResponse.department+", Price: "+inquirerResponse.price+", Quantity: "+inquirerResponse.quantity+", Confirmed: "+inquirerResponse.confirm, function(error) {
+          fs.appendFile( "log.txt", "\nDepartment: "+inquirerResponse.department+", Price: "+inquirerResponse.price+", Quantity: "+inquirerResponse.quantity+", Confirmed: "+inquirerResponse.confirm, function(error) {
           if (error) {
             console.log(error);
             fs.appendFile( "log.txt", "\n"+ JSON.stringify(error, null, 2), function(err) {
@@ -124,14 +119,13 @@
           }
         });
           if(inquirerResponse.confirm) {
-            addProdCheck(inquirerResponse.product, inquirerResponse.department, inquirerResponse.price, inquirerResponse.quantity);
+            addDep(inquirerResponse.department, inquirerResponse.cost);
           } else {
             action();
           }
           
         });
   }
-
 //Display all products
 
   function displayAll(hidden) {
@@ -206,14 +200,7 @@
           
         });
 	}
-//Inquirer between products
-  //* If a manager selects `View Products for Sale`, the app should list every available item: the item IDs, names, prices, and quantities.
-
-  //   * If a manager selects `View Low Inventory`, then it should list all items with an inventory count lower than five.
-
-  //   * If a manager selects `Add to Inventory`, your app should display a prompt that will let the manager "add more" of any item currently in the store.
-
-  //   * If a manager selects `Add New Product`, it should allow the manager to add a completely new product to the store.
+//Inquirer between action
   function action() {
     inquirer
         .prompt([
@@ -247,7 +234,7 @@
                 displayByDepInq();
                 break;
               case "Create New Department":
-                addDepartment();
+                addDepInq();
                 break;
               case "Leave":
                 connection.end();
