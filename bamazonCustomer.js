@@ -33,15 +33,16 @@
 		    // Log all results of the SELECT statement
 		    //updateProduct2(productID, decr);
 		    // console.log("Results: "+ JSON.stringify(res, null, 2));
-		    updateProduct2(productID, decr, res[0].stock_quantity, res[0].product_name, res[0].price);
+		    updateProduct2(productID, decr, res[0].stock_quantity, res[0].product_sales, res[0].product_name, res[0].price);
 		  });
 
 		// logs the actual query being run
 
 	}
-	function updateProduct2(productID, decr, quan, productName, productPrice) {
+	function updateProduct2(productID, decr, quan, sales, productName, productPrice) {
 		// console.log("Quantity: " + quan);
 		var newResult = parseInt(quan - decr);
+		var newResultSales = (parseFloat(sales) + (productPrice*parseFloat(decr).toFixed(2))).toFixed(2);
 		// console.log("New quantity:" + newResult);
 		// console.log("decr:" + decr);
 		if(newResult >= 0 ) {
@@ -50,10 +51,11 @@
 				"UPDATE products SET ? WHERE ?",
 				[
 			    	{
-			    		stock_quantity: newResult
+			    		stock_quantity: newResult,
+			    		product_sales: newResultSales,
 			    	},
 			    	{
-			        	id: productID
+			        	id: productID,
 			    	}
 		    	],
 		    	function(err, res) {
